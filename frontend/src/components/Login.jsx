@@ -13,8 +13,8 @@ const Login = () => {
   const [currentState, setCurrentState] = useState("Login")
   const [data, setData] = useState({
     name: "",
-    email: "julhas.info@gmail.com",
-    password: "66666666",
+    email: "",
+    password: "",
   })
   const [image, setImage] = useState(null)
 

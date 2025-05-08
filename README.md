@@ -2,9 +2,13 @@
 
 **SpicyMeal** is a full-stack restaurant web application that allows customers to explore food items, place orders, book tables, and contact the restaurant. It also includes an admin backend for managing food items, orders, table books, messages, and users.
 
+---
+
 [Visit SpicyMeal Live](https://your-live-site-link.com)
 
 [Watch Demo on YouTube](https://your-video-link.com)
+
+---
 
 ## 🚀 Features
 
@@ -39,6 +43,7 @@
   - Login system
   - Logout system
 
+---
 
 ### 🔧 Backend (Admin Side)
 
@@ -63,6 +68,8 @@
   - View list of registered users.
   - View detailed information of individual users.
 
+---
+
 ## 🛠️ Tech Stack
 
 - **Frontend**: React.js, Tailwind CSS, Axios, React Router
@@ -70,6 +77,7 @@
 - **Authentication**: JWT
 - **State Management**: React State / Context API
 
+---
 
 ## 🧠 Challenges Faced
 

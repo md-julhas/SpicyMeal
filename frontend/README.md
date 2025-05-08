@@ -1,12 +1,44 @@
-# React + Vite
+# 🌶️ SpicyMeal – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend portion of the **SpicyMeal** full-stack restaurant web application.  
+It allows users to explore food items, place orders, book tables, send messages, and manage their cart.  
+Built with **React.js** and styled using **Tailwind CSS**, it provides a responsive and user-friendly experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+### 🔍 Food Search System
+- Real-time search by food name  
+- Highlights matched text dynamically
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🍽️ Display Food Items
+- Food items grouped by category  
+- Responsive, card-based layout
+
+### 🛒 Food Ordering System
+- Add or remove items to/from cart  
+- Fill out delivery information form  
+- Place and confirm orders
+
+### 📅 Table Booking System
+- Reserve tables via a simple form  
+- View booking status (if implemented)
+
+### 📬 Contact Form
+- Send messages directly to the restaurant  
+- Messages are stored and viewable in admin panel
+
+### 🔐 Authentication
+- User registration and login/logout  
+- Persist user session using JWT (handled via backend)
+
+---
+
+## ⚙️ Tech Stack
+
+- **React.js** – JavaScript library for building user interfaces  
+- **Tailwind CSS** – Utility-first CSS framework for styling  
+- **React Router DOM** – Client-side routing for navigation  
+- **Axios** – Promise-based HTTP client for making API requests  
+- **React Context API / useState** – State management for global and local data

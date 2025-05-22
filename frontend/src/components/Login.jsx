@@ -10,6 +10,7 @@ const Login = () => {
   const { url, setToken, showLogin, setShowLogin, fetchCartItems, setUser } =
     useContext(StoreContext)
 
+  const [isLoading, setIsLoading] = useState(false)
   const [currentState, setCurrentState] = useState("Login")
   const [data, setData] = useState({
     name: "",
@@ -47,45 +48,50 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    let newUrl = url
-    const formData = new FormData()
+    setIsLoading(true)
+    try {
+      let newUrl = url
+      const formData = new FormData()
 
-    if (currentState === "Login") {
-      newUrl += "/api/users/login"
-    } else {
-      newUrl += "/api/users/register"
-      formData.append("name", data.name)
-      formData.append("email", data.email)
-      formData.append("password", data.password)
-      if (image) {
-        formData.append("image", image)
+      if (currentState === "Login") {
+        newUrl += "/api/users/login"
+      } else {
+        newUrl += "/api/users/register"
+        formData.append("name", data.name)
+        formData.append("email", data.email)
+        formData.append("password", data.password)
+        if (image) {
+          formData.append("image", image)
+        }
       }
-    }
 
-    // If state login, then send data as JSON (no FormData)
-    const requestData =
-      currentState === "Login"
-        ? {
-            email: data.email,
-            password: data.password,
-          }
-        : formData
+      const requestData =
+        currentState === "Login"
+          ? { email: data.email, password: data.password }
+          : formData
 
-    const response = await axios.post(newUrl, requestData, {
-      headers: {
-        "Content-Type":
-          currentState === "Login" ? "application/json" : "multipart/form-data",
-      },
-    })
+      const response = await axios.post(newUrl, requestData, {
+        headers: {
+          "Content-Type":
+            currentState === "Login"
+              ? "application/json"
+              : "multipart/form-data",
+        },
+      })
 
-    if (response.data.success) {
-      setToken(response.data.token)
-      localStorage.setItem("token", response.data.token)
-      setShowLogin(false)
-      toast.success(response.data.message)
-      await fetchCartItems(response.data.token)
-    } else {
-      toast.error(response.data.message)
+      if (response.data.success) {
+        setToken(response.data.token)
+        localStorage.setItem("token", response.data.token)
+        setShowLogin(false)
+        toast.success(response.data.message)
+        await fetchCartItems(response.data.token)
+      } else {
+        toast.error(response.data.message)
+      }
+    } catch (error) {
+      toast.error("Something went wrong.")
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -170,8 +176,13 @@ const Login = () => {
               <button
                 type="submit"
                 className="bg-themeColor px-5 py-2 rounded-sm text-gray-100 my-5"
+                disabled={isLoading}
               >
-                {currentState === "Sign Up" ? "Create account" : "Login"}
+                {isLoading
+                  ? "Loading..."
+                  : currentState === "Sign Up"
+                  ? "Create account"
+                  : "Login"}
               </button>
 
               {currentState === "Login" ? (

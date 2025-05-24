@@ -65,13 +65,12 @@
 
 ## 🧠 Challenges Faced
 
-### Stale Cart Data After Food Deletion (Data Inconsistency Issue)
+### 1.Stale Cart Data After Food Deletion (Data Inconsistency Issue)
 
 Initially, I designed the cart system to rely on the food items fetched during the initial API call. Each user's cart was stored in the database as an object (`cartData`) using food IDs as keys.  
 
 The issue arose when an admin deleted a food item that a user had previously added to their cart. Since the `cartData` still contained the deleted food's ID, the frontend would throw an error when attempting to render the cart—because the item no longer existed in the newly fetched food list.
 
-<br>
 
 ### ✅ Solution
 
@@ -85,3 +84,14 @@ Steps taken:
 4. Sent back only the valid cart data in the response.  
 
 This ensured that users would never encounter errors due to deleted food items in their cart, and the app could handle such cases gracefully.
+
+<br>
+
+### 2.Incorrect Client IP Detection Behind Proxy
+
+The backend application was running behind a proxy server, which caused the client IP addresses to be detected incorrectly. As a result, even though I had configured rate limits on various routes, clients were still able to send excessive requests because the server couldn’t accurately identify their real IP addresses.
+
+### ✅ Solution
+
+I resolved the issue by using app.set('trust proxy', true) in the Express.js application. This allowed Express to trust the X-Forwarded-For header and accurately extract the client’s real IP address from it. As a result, the rate-limiting middleware functioned properly and enforced request limits based on the actual client IPs.
+

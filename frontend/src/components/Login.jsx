@@ -30,7 +30,7 @@ const Login = () => {
 
     if (file) {
       const validTypes = ["image/jpeg", "image/jpg", "image/png"]
-      const maxSize = 1 * 1024 * 1024 // 1MB
+      const maxSize = 500 * 1024 // 500KB in bytes
 
       if (!validTypes.includes(file.type)) {
         toast.error("Only JPG, JPEG, or PNG files are allowed.")
@@ -38,7 +38,7 @@ const Login = () => {
       }
 
       if (file.size > maxSize) {
-        toast.error("Image must be smaller than 1MB.")
+        toast.error("Image must be smaller than 500KB!")
         return
       }
 

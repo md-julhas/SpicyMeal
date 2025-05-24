@@ -1,5 +1,6 @@
 import express from "express"
 import rateLimit from "express-rate-limit"
+import multer from "multer"
 
 import {
   adminLoginUser,
@@ -10,7 +11,6 @@ import {
   registerUser,
 } from "../controllers/userController.js"
 import authMiddleware from "../middleware/auth.js"
-import multer from "multer"
 const userRouter = express.Router()
 
 const storage = multer.diskStorage({
@@ -24,10 +24,10 @@ const upload = multer({ storage: storage })
 
 // Strict limiter for user creation (very low limit)
 const createUserLimiter = rateLimit({
-  windowMs: 5 * 60 * 1000,
+  windowMs: 15 * 60 * 1000,
   max: 5,
   message:
-    "Too many accounts created from this IP, please try again after 5 minutes",
+    "Too many account creation requests from this IP. Please try again after 15 minutes.",
 })
 
 

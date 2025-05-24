@@ -1,8 +1,8 @@
 # 🌶️ SpicyMeal
 
 **SpicyMeal** is a full-stack restaurant food delivery application that delivers a seamless food ordering experience. It offers features like food search, organized categories, cart management, table booking, order tracking, and a contact form for customers to send messages directly to the restaurant or support team. The admin panel includes comprehensive tools to manage food items, user profiles, orders, and customer messages, ensuring efficient restaurant operations and excellent customer service.
-
-Visit SpicyMeal User Side Live: [Click Here](https://spicymeal.vercel.app/) <br> <br>
+<br>
+Visit SpicyMeal User Side Live: [Click Here](https://spicymeal.vercel.app/) <br>
 Visit SpicyMeal Admin Panel Live: [Click Here](https://spicymealadmin.vercel.app/)
 
 <br>

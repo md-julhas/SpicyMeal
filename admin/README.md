@@ -6,6 +6,9 @@ Built with **Node.js**, **Express.js**, and **MongoDB**, it serves as the core A
 
 <br>
 
+Admin Panel Live Demo: [Click Here](https://spicymealadmin.vercel.app/)
+
+
 ## 🚀 Admin Features
 
 ### 💬 Manage Messages

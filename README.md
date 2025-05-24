@@ -4,8 +4,8 @@
 
 <br>
 
-Visit SpicyMeal User Side Live: [Click Here](https://spicymeal.vercel.app/) <br>
-Visit SpicyMeal Admin Panel Live: [Click Here](https://spicymealadmin.vercel.app/)
+User Side Live Demo: [Click Here](https://spicymeal.vercel.app/) <br>
+Admin Panel Live Demo: [Click Here](https://spicymealadmin.vercel.app/)
 
 <br>
 

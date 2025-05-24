@@ -42,14 +42,14 @@
 
 ### 🔧 Backend
 
-- Enhancing API security with route-specific rate limiting
 - Provide food data via REST API  
 - Handle cart, orders, and store them in database  
 - Process and store table booking requests  
 - Store contact messages from users  
 - Authenticate users with JWT  
 - Hash and verify passwords securely  
-- Support admin actions: manage messages, food items, orders, and users  
+- Support admin actions: manage messages, food items, orders, and users
+- Enhancing API security with route-specific rate limiting
 
 <br>
 
@@ -57,9 +57,14 @@
 ### 🛠️ Tech Stack
 
 - **Frontend**: React.js, Tailwind CSS, Axios, React Router  
-- **Backend**: Node.js, Express.js, MongoDB, Mongoose  
-- **Authentication**: JWT  
-- **State Management**: React State / Context API  
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose
+- **Database**: MongoDB with Mongoose ODM
+- **Authentication**: JWT (JSON Web Tokens) 
+- **File Handling**: Multer
+- **API Testing**: Postman 
+- **Validation**: Express-Validator / Custom logic
+- **Security**: Rate Limiter, Helmet, CORS, and dotenv for managing environment variables
+- **State Management**: React State / Context API
 
 <br>
 
@@ -94,4 +99,3 @@ The backend application was running behind a proxy server, which caused the clie
 ### ✅ Solution
 
 I resolved the issue by using app.set('trust proxy', true) in the Express.js application. This allowed Express to trust the X-Forwarded-For header and accurately extract the client’s real IP address from it. As a result, the rate-limiting middleware functioned properly and enforced request limits based on the actual client IPs.
-

@@ -2,7 +2,7 @@
 
 This is the backend of the **SpicyMeal** full-stack restaurant web application. It powers both the **user side** and the **admin panel**, handling data storage, business logic, authentication, and API communication using **Node.js**, **Express.js**, and **MongoDB (via Mongoose ODM)**.
 
----
+<br>
 
 ## 🚀 API Features
 
@@ -14,7 +14,6 @@ This is the backend of the **SpicyMeal** full-stack restaurant web application. 
 - Admin-specific access control
 - Logout functionality
 
----
 
 ### 🍽️ Food Management
 
@@ -22,7 +21,6 @@ This is the backend of the **SpicyMeal** full-stack restaurant web application. 
 - View all food items (public)
 - Delete food items (admin)
 
----
 
 ### 🛒 Order Management
 
@@ -31,15 +29,14 @@ This is the backend of the **SpicyMeal** full-stack restaurant web application. 
 - Change order status: Pending, Confirmed, Completed (admin)
 - Delete orders (admin)
 
----
 
 ### 📅 Table Booking
 
 - Submit table reservation requests (user)
+- View table booked history
 - View all bookings (admin)
 - Delete/cancel bookings (admin)
 
----
 
 ### 📬 Contact Messages
 
@@ -47,7 +44,6 @@ This is the backend of the **SpicyMeal** full-stack restaurant web application. 
 - View submitted messages (admin)
 - Delete messages (admin)
 
----
 
 ### 🧺 Cart Data Validation
 
@@ -55,13 +51,13 @@ This is the backend of the **SpicyMeal** full-stack restaurant web application. 
 - Ensure deleted food items don't break the cart UI
 - Clean up stale cart data automatically
 
----
 
-## 🛠️ Tech Stack
+## ⚙️ Tech Stack
 
-- **Backend Framework**: Node.js + Express.js
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose
 - **Database**: MongoDB with Mongoose ODM
-- **Authentication**: JSON Web Tokens (JWT), bcryptjs
-- **API Design**: RESTful endpoints
-- **Middleware**: Custom auth middleware, error handlers
-- **Environment Management**: dotenv
+- **Authentication**: JWT (JSON Web Tokens) 
+- **File Handling**: Multer
+- **API Testing**: Postman 
+- **Validation**: Express-Validator / Custom logic
+- **Security**: Rate Limiter, Helmet, CORS, and dotenv for managing environment variables

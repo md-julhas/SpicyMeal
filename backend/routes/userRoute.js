@@ -25,7 +25,7 @@ const upload = multer({ storage: storage })
 // Strict limiter for user creation (very low limit)
 const createUserLimiter = rateLimit({
   windowMs: 5 * 60 * 1000,
-  max: 1,
+  max: 5,
   message:
     "Too many accounts created from this IP, please try again after 5 minutes",
 })

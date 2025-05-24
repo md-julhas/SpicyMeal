@@ -13,7 +13,6 @@
 
 ### 🧾 Frontend (User Side)
 
-- Front end  
 - Display food items via API calls  
 - Food Search System  
 - Organized Food Categories  
@@ -23,11 +22,11 @@
 - View orders and status  
 - View user profile 
 
-- **Authentication System**
+### 🧾 Authentication System
 
-   - User registration
-  - Login system
-  - Logout system
+- User registration
+- Login system
+- Logout system
 
 ---
 
@@ -43,7 +42,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+### 🛠️ Tech Stack
 
 - **Frontend**: React.js, Tailwind CSS, Axios, React Router
 - **Backend**: Node.js, Express.js, MongoDB, Mongoose
@@ -52,7 +51,7 @@
 
 ---
 
-## 🧠 Challenges Faced
+### 🧠 Challenges Faced
 
 ### Stale Cart Data After Food Deletion (Data Inconsistency Issue)
 

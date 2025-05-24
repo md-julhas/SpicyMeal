@@ -89,7 +89,13 @@ const Login = () => {
         toast.error(response.data.message)
       }
     } catch (error) {
-      toast.error("Something went wrong.")
+       if (error.response && error.response.status === 429) {
+        toast.error(
+          "Too many requests from this IP, please try again in 15 minutes later"
+        )
+      } else {
+        toast.error("Something went wrong.")
+      }
     } finally {
       setIsLoading(false)
     }

@@ -22,6 +22,16 @@
 
 <br>
 
+### 🔧 Admin Panel
+
+- Manage messages (view & delete)  
+- Manage food list (upload, view, delete)  
+- Manage orders (view, delete, change status)  
+- Manage users (view all, detailed info) 
+- Authenticate users with JWT  
+
+<br>
+
 ### 🧾 Authentication System
 
 - User registration  
@@ -32,6 +42,7 @@
 
 ### 🔧 Backend
 
+- Enhancing API security with route-specific rate limiting
 - Provide food data via REST API  
 - Handle cart, orders, and store them in database  
 - Process and store table booking requests  
@@ -41,6 +52,7 @@
 - Support admin actions: manage messages, food items, orders, and users  
 
 <br>
+
 
 ### 🛠️ Tech Stack
 

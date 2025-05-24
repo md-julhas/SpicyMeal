@@ -21,7 +21,16 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-userRouter.post("/register", upload.single("image"), registerUser)
+// Strict limiter for user creation (very low limit)
+const createUserLimiter = rateLimit({
+  windowMs: 5 * 60 * 1000,
+  max: 5,
+  message:
+    "Too many accounts created from this IP, please try again after 5 minutes",
+})
+
+
+userRouter.post("/register", createUserLimiter, upload.single("image"), registerUser)
 userRouter.post("/login", loginUser)
 userRouter.get("/user-basic", authMiddleware, handleGetUserBasic)
 userRouter.get("/user", authMiddleware, handleGetUser)

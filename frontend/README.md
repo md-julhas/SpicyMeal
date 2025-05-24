@@ -4,7 +4,8 @@ This is the frontend portion of the **SpicyMeal** full-stack restaurant web appl
 It allows users to explore food items, place orders, book tables, send messages, and manage their cart.  
 Built with **React.js** and styled using **Tailwind CSS**, it provides a responsive and user-friendly experience.
 
-[Visit SpicyMeal Live](https://spicymeal.vercel.app/)
+User Side Live Demo: [Click Here](https://spicymeal.vercel.app/) <br>
+
 
 <br>
 

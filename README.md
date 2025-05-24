@@ -1,12 +1,11 @@
 # 🌶️ SpicyMeal
 
-**SpicyMeal** is a full-stack restaurant web application that allows customers to explore food items, place orders, book tables, and contact the restaurant. It also includes an admin backend for managing food items, orders, table books, messages, and users.
+**SpicyMeal** SpicyMeal is a full-stack restaurant food delivery application that offers a seamless food ordering experience for customers, including features like food search, organized categories, cart management, table booking, and order tracking. The admin panel provides comprehensive tools to manage food items, user profiles, orders, and customer messages, ensuring efficient restaurant operations and customer service.
 
 ---
 
-[Visit SpicyMeal Live](https://your-live-site-link.com)
+[Visit SpicyMeal Live](https://spicymeal.vercel.app/)
 
-[Watch Demo on YouTube](https://your-video-link.com)
 
 ---
 
@@ -14,59 +13,33 @@
 
 ### 🧾 Frontend (User Side)
 
-- **Display Food Items**  
-  View a list of food items categorized by food types.
-
-- **Food Ordering System**
-
-  - Add items to cart.
-  - View cart items.
-  - Fill up delivery information form.
-  - Confirm and place orders.
-
-- **Table Booking System**  
-  Book tables through a simple reservation form.
-
-- **Contact Us System**  
-  Send messages to the restaurant via a contact form.
-
-- **Food Search System**
-
-  - Search food by name.
-  - Highlight matched search text.
-
-- **Organized Food Categories**  
-  Food is grouped by type for easier browsing.
+- Front end  
+- Display food items via API calls  
+- Food Search System  
+- Organized Food Categories  
+- Food ordering system (Add and view cart items, fill up delivery form and place orders)  
+- Table booking system  
+- Contact Us System  
+- View orders and status  
+- View user profile 
 
 - **Authentication System**
-  - User registration
+
+   - User registration
   - Login system
   - Logout system
 
 ---
 
-### 🔧 Backend (Admin Side)
+### 🔧 Backend
 
-- **Manage Messages**
-
-  - View messages submitted by users.
-  - Delete messages.
-
-- **Manage Food List**
-
-  - Upload new food items.
-  - View all uploaded foods.
-  - Delete food items.
-
-- **Manage Orders**
-
-  - View food orders and table bookings.
-  - Delete orders.
-  - Change order status (e.g., pending, confirmed, completed).
-
-- **Manage Users**
-  - View list of registered users.
-  - View detailed information of individual users.
+- Provide food data via REST API  
+- Handle cart, orders, and store them in database  
+- Process and store table booking requests  
+- Store contact messages from users  
+- Authenticate users with JWT  
+- Hash and verify passwords securely  
+- Support admin actions: manage messages, food items, orders, and users  
 
 ---
 
@@ -87,11 +60,4 @@ Initially, I designed the cart system to rely on the food items fetched during t
 
 #### ✅ Solution
 
-To resolve this, I separated the cart rendering process from the initial food fetch logic. Instead, I created a dedicated backend API that directly retrieves and validates the user's cart data.
-
-- Fetched the user's `cartData`.
-- Checked if each food ID in `cartData` still existed in the current food collection in the database.
-- Removed any invalid or deleted food IDs from the cart.
-- Sent back only the valid cart data in the response.
-
-This ensured that users would never encounter errors due to deleted food items in their cart, and the app could handle such cases gracefully.
+To resolve this, I separated the cart rendering process from the initial food fetch logic. Instead, I created a dedicated backend API that directly retrieves and validates the user's cart data. Fetched the user's cartData. Checked if each food ID in cartData still existed in the current food collection in the database. Removed any invalid or deleted food IDs from the cart. Sent back only the valid cart data in the response. This ensured that users would never encounter errors due to deleted food items in their cart, and the app could handle such cases gracefully.

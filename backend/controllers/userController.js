@@ -56,14 +56,16 @@ const adminLoginUser = async (req, res) => {
   }
 }
 
+
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body
+
   try {
     const exists = await userModel.findOne({ email })
     if (exists) {
       return res.json({
         success: false,
-        message: "User already exist with this email, please login",
+        message: "User already exists with this email, please login",
       })
     }
 
@@ -73,35 +75,40 @@ const registerUser = async (req, res) => {
     if (password.length < 8) {
       return res.json({
         success: false,
-        message: "Password must be at least 8 chracter",
+        message: "Password must be at least 8 characters",
       })
     }
 
-    // Password hashed
-    const salt = await bcrypt.genSaltSync(10)
-    const hashedPassword = await bcrypt.hashSync(password, salt)
+    const salt = bcrypt.genSaltSync(10)
+    const hashedPassword = bcrypt.hashSync(password, salt)
 
-    // Cloudinary user image upload
-    const imageUploadCloudinary = await cloudinary.uploader.upload(
-      req.file.path,
-      {
+
+    let imageUrl = null
+    let imgPublicId = null
+
+    if (req.file) {
+      const imageUploadCloudinary = await cloudinary.uploader.upload(req.file.path, {
         folder: "users",
         use_filename: true,
-        qnique_filename: true,
+        unique_filename: true,
         resource_type: "image",
-      }
-    )
+      })
 
-    fs.unlink(req.file.path, (err) => {
-      if (err) console.error("Error deleting local file:", err)
-    })
+      fs.unlink(req.file.path, (err) => {
+        if (err) console.error("Error deleting local file:", err)
+      })
 
+      imageUrl = imageUploadCloudinary.secure_url
+      imgPublicId = imageUploadCloudinary.public_id
+    }
+
+    // Create new user
     const newUser = new userModel({
       name,
       email,
       password: hashedPassword,
-      image: imageUploadCloudinary.secure_url,
-      imgPublicId: imageUploadCloudinary.public_id,
+      ...(imageUrl && { image: imageUrl }),
+      ...(imgPublicId && { imgPublicId }),
     })
 
     const user = await newUser.save()
@@ -113,14 +120,17 @@ const registerUser = async (req, res) => {
       message: "Registration successful. You are now logged in.",
     })
   } catch (error) {
+    // Clean up local file if exists
     if (req.file && req.file.path) {
       fs.unlink(req.file.path, (err) => {
         if (err) console.error("Error deleting local file:", err)
       })
     }
+
     res.json({ success: false, message: error.message })
   }
 }
+
 
 const handleGetUserBasic = async (req, res) => {
   try {

@@ -296,7 +296,7 @@ const FoodOrders = () => {
                         >
                           <div className="flex items-center gap-2 ">
                             <img
-                              src={url + "/images/" + item.image}
+                              src={item.image}
                               alt={item.name}
                               loading="lazy"
                               className="rounded-sm object-cover h-14 w-14"

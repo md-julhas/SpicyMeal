@@ -96,7 +96,7 @@ const Navbar = () => {
         >
           {userBasic?.image ? (
             <img
-              src={url + "/user-images/" + userBasic.image}
+              src={userBasic.image}
               className="object-cover h-8 w-8 rounded-full border"
             />
           ) : (

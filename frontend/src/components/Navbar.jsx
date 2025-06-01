@@ -172,7 +172,7 @@ const Navbar = () => {
                 >
                   {user?.image ? (
                     <img
-                      src={url + "/user-images/" + user.image}
+                      src={user.image}
                       className="object-cover h-8 w-8 rounded-full border"
                     />
                   ) : (

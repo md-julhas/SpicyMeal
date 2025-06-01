@@ -27,6 +27,7 @@ const userShcema = new mongoose.Schema(
       type: Object,
       default: {},
     },
+    imgPublicId: { type: String, required: true },
   },
   { minimize: false, timestamps: true }
 )

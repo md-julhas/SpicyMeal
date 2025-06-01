@@ -1,7 +1,10 @@
 import userModel from "../models/userModel.js"
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
+import fs from "fs"
 import validator from "validator"
+
+import cloudinary from "../utils/cloudinary.js"
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET)
@@ -74,15 +77,31 @@ const registerUser = async (req, res) => {
       })
     }
 
-    // Password
+    // Password hashed
     const salt = await bcrypt.genSaltSync(10)
     const hashedPassword = await bcrypt.hashSync(password, salt)
+
+    // Cloudinary user image upload
+    const imageUploadCloudinary = await cloudinary.uploader.upload(
+      req.file.path,
+      {
+        folder: "users",
+        use_filename: true,
+        qnique_filename: true,
+        resource_type: "image",
+      }
+    )
+
+    fs.unlink(req.file.path, (err) => {
+      if (err) console.error("Error deleting local file:", err)
+    })
 
     const newUser = new userModel({
       name,
       email,
       password: hashedPassword,
-      image: req.file && req.file.filename,
+      image: imageUploadCloudinary.secure_url,
+      imgPublicId: imageUploadCloudinary.public_id,
     })
 
     const user = await newUser.save()
@@ -94,6 +113,11 @@ const registerUser = async (req, res) => {
       message: "Registration successful. You are now logged in.",
     })
   } catch (error) {
+    if (req.file && req.file.path) {
+      fs.unlink(req.file.path, (err) => {
+        if (err) console.error("Error deleting local file:", err)
+      })
+    }
     res.json({ success: false, message: error.message })
   }
 }

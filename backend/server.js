@@ -15,7 +15,7 @@ import contactUsRoute from "./routes/contactUsRoute.js"
 const app = express()
 const port = process.env.PORT || 5000
 
-app.set('trust proxy', true);
+app.set("trust proxy", true)
 
 // Configure rate limiting
 const rateLimiter = rateLimit({
@@ -36,8 +36,6 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/food", foodRouter)
-app.use("/images", express.static("uploads"))
-app.use("/user-images", express.static("uploads/user"))
 app.use("/api/users/", userRouter)
 app.use("/api/cart/", cartRouter)
 app.use("/api/order/", orderRouter)

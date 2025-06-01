@@ -10,9 +10,11 @@ import { Helmet } from "react-helmet"
 const FoodList = () => {
   const { url } = useStateContext()
   const [foodList, setList] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [deletingId, setDeletingId] = useState(null)
 
   const fetchList = async () => {
+    setLoading(true)
     try {
       const response = await axios.get(`${url}/api/food/food-list`)
       if (response.data.success) {
@@ -36,9 +38,13 @@ const FoodList = () => {
   }, [])
 
   const removeFood = async (foodId) => {
+    console.log(foodId)
+
+    setDeletingId(foodId)
     const response = await axios.delete(`${url}/api/food/remove/${foodId}`)
 
     if (response.data.success) {
+      setDeletingId(null)
       toast.success(response.data.message)
       await fetchList()
     } else {
@@ -84,7 +90,7 @@ const FoodList = () => {
                   className="grid grid-cols-7 border-b border-dashed py-2 items-center gap-5 hover:bg-gray-100"
                 >
                   <img
-                    src={`${url}/images/` + item.image}
+                    src={item.image}
                     alt=""
                     className="h-10 w-10 rounded-sm"
                   />
@@ -96,12 +102,15 @@ const FoodList = () => {
                   </p>
                   <p className="capitalize text-gray-400">{item.category}</p>
                   <p className="font-bold">${item.price}.00</p>
-
                   <button
                     onClick={() => removeFood(item._id)}
                     className="ml-auto h-fit p-2 transition-colors duration-300 bg-themeColor text-themeColor rounded-sm bg-opacity-20 hover:bg-themeColor hover:text-gray-200 text-sm"
                   >
-                    <RiDeleteBinLine />
+                    {deletingId === item._id ? (
+                      <div className="w-3 h-3 border-2 border-t-themeColor rounded-full animate-spin"></div>
+                    ) : (
+                      <RiDeleteBinLine />
+                    )}
                   </button>
                 </div>
               )

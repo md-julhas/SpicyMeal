@@ -67,7 +67,7 @@ const MyProfile = () => {
               <div>
                 {user.image ? (
                   <img
-                    src={url + "/user-images/" + user.image}
+                    src={user.image}
                     alt={user.name}
                     className="object-cover h-52 w-52 rounded-sm"
                   />

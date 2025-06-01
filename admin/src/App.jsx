@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Routes, Route, BrowserRouter } from "react-router-dom"
-import { ToastContainer } from "react-toastify"
+import { toast, ToastContainer } from "react-toastify"
 
 import FoodOrders from "./pages/FoodOrders"
 import Home from "./pages/Home"
@@ -16,6 +16,13 @@ import NotFound from "./pages/NotFound"
 
 const App = () => {
   const { token } = useStateContext()
+
+  useEffect(() => {
+    toast.info(
+      "This is a hobby project hosted on a free-tier server, the initial data load may take about 1 minute due to server cold starts. Thanks for your patience!",
+      { autoClose: 11000 }
+    )
+  }, [])
 
   return (
     <div>

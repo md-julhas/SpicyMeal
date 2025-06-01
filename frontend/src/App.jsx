@@ -1,5 +1,5 @@
-import React from "react"
-import { ToastContainer } from "react-toastify"
+import React, { useEffect } from "react"
+import { toast, ToastContainer } from "react-toastify"
 import { Route, Routes } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
@@ -17,6 +17,12 @@ import MyProfile from "./pages/MyProfile"
 import NotFound from "./pages/NotFound"
 
 const App = () => {
+  useEffect(() => {
+    toast.info(
+      "This is a hobby project hosted on a free-tier server, the initial data load may take about 1 minute due to server cold starts. Thanks for your patience!",
+      { autoClose: 11000 }
+    )
+  }, [])
   return (
     <div className="text-gray-700 overflow-y-scroll overflow-x-hidden min-h-screen h-screen">
       <Login />

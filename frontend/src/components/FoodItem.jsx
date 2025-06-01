@@ -45,7 +45,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
     <div className="bg-white p-5 rounded-sm">
       <div className="h-60 w-full">
         <img
-          src={url + "/images/" + image}
+          src={image}
           alt={name}
           loading="lazy"
           className="rounded-sm object-cover h-60 w-full"

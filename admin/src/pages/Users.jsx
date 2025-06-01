@@ -71,7 +71,7 @@ const Users = () => {
               <div className="flex items-center gap-2">
                 {user.image ? (
                   <img
-                    src={url + "/user-images/" + user.image}
+                    src={user.image}
                     alt={user.name}
                     className="h-7 w-7 rounded-full"
                   />
@@ -125,7 +125,7 @@ const Users = () => {
                   <div className="flex items-center justify-center">
                     {selectedUser.image ? (
                       <img
-                        src={url + "/user-images/" + selectedUser.image}
+                        src={selectedUser.image}
                         alt={selectedUser.name}
                         className="h-40 w-40 rounded-sm"
                       />

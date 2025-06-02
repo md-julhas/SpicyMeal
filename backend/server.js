@@ -15,7 +15,7 @@ import contactUsRoute from "./routes/contactUsRoute.js"
 const app = express()
 const port = process.env.PORT || 5000
 
-app.set("trust proxy", true)
+app.set("trust proxy", 2)
 
 // Configure rate limiting
 const rateLimiter = rateLimit({

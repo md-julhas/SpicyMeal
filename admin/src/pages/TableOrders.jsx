@@ -16,6 +16,7 @@ const TableOrders = () => {
   const [loading, setLoading] = useState(true)
   const [selectedBooking, setSelectedBooking] = useState(null)
   const [status, setStatus] = useState("")
+  const [deletingId, setDeletingId] = useState(null)
 
   useClickOutside(modelRef, selectedBooking, setSelectedBooking)
 
@@ -81,7 +82,9 @@ const TableOrders = () => {
   useEffect(() => {
     fetchTableOrders()
   }, [])
+
   const handleDeleteBooking = async (bookingID) => {
+    setDeletingId(bookingID)
     try {
       const response = await axios.delete(
         `${url}/api/book-table/remove/${bookingID}`,
@@ -93,6 +96,8 @@ const TableOrders = () => {
       }
     } catch (error) {
       toast.error("Failed to delete order!")
+    } finally {
+      setDeletingId(null)
     }
   }
 
@@ -173,7 +178,11 @@ const TableOrders = () => {
                   onClick={() => handleDeleteBooking(booking._id)}
                   className="flex items-end p-2 transition-colors duration-300 bg-themeColor text-themeColor rounded-sm bg-opacity-20 hover:bg-themeColor hover:text-gray-200 text-sm"
                 >
-                  <RiDeleteBinLine className="" />
+                  {deletingId === booking._id ? (
+                    <div className="w-3 h-3 border-2 border-t-themeColor rounded-full animate-spin"></div>
+                  ) : (
+                    <RiDeleteBinLine />
+                  )}
                 </button>
               </div>
             </div>

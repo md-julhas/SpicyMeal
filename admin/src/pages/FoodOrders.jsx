@@ -17,6 +17,7 @@ const FoodOrders = () => {
   const [loading, setLoading] = useState(true)
   const [selectedOrder, setSelectedOrder] = useState(null)
   const [status, setStatus] = useState("")
+  const [deletingId, setDeletingId] = useState(null)
 
   useClickOutside(modelRef, selectedOrder, setSelectedOrder)
 
@@ -81,6 +82,7 @@ const FoodOrders = () => {
   }
 
   const handleDelete = async (orderID) => {
+    setDeletingId(orderID)
     try {
       const response = await axios.delete(
         `${url}/api/order/delete/${orderID}`,
@@ -92,6 +94,8 @@ const FoodOrders = () => {
       }
     } catch (error) {
       toast.error("Failed to delete order!")
+    } finally {
+      setDeletingId(null)
     }
   }
 
@@ -158,7 +162,7 @@ const FoodOrders = () => {
                           {order.status}
                         </span>
                       </div>
-                      <span>{moment(order.date).fromNow()}</span>
+                      <span>{moment(order.createdAt).fromNow()}</span>
                     </div>
                   </div>
 
@@ -167,7 +171,11 @@ const FoodOrders = () => {
                       onClick={() => handleDelete(order._id)}
                       className="flex items-end p-2 transition-colors duration-300 bg-themeColor text-themeColor rounded-sm bg-opacity-20 hover:bg-themeColor hover:text-gray-200 text-sm"
                     >
-                      <RiDeleteBinLine className="" />
+                      {deletingId === order._id ? (
+                        <div className="w-3 h-3 border-2 border-t-themeColor rounded-full animate-spin"></div>
+                      ) : (
+                        <RiDeleteBinLine />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -228,7 +236,7 @@ const FoodOrders = () => {
                       {/* Order date */}
                       <div className="text-sm text-gray-400 mt-1">
                         <b className="text-gray-700">Order Date: </b>
-                        {moment(selectedOrder.date).format(
+                        {moment(selectedOrder.createdAt).format(
                           "MMMM D, YYYY [at] h:mmA"
                         )}
                       </div>
@@ -274,7 +282,7 @@ const FoodOrders = () => {
                       </div>
                       <div>
                         <b>Order Date:</b>{" "}
-                        {moment(selectedOrder.date).fromNow()}
+                        {moment(selectedOrder.createdAt).fromNow()}
                       </div>
                     </div>
 
@@ -323,8 +331,8 @@ const FoodOrders = () => {
                       ))}
 
                       <div className="flex justify-end items-center gap-5 py-2 border-b border-dashed">
-                        <b>Sub Total: </b>{" "}
-                        <span>${selectedOrder.amount}.00</span>
+                        <span>Sub Total: </span>{" "}
+                        <b>${selectedOrder.amount}.00</b>
                       </div>
 
                       <div className="flex items-center justify-between py-2 border-b border-dashed">
@@ -334,8 +342,8 @@ const FoodOrders = () => {
                         <span>Devlivery Fee</span> <span>$2.00</span>
                       </div>
                       <div className="flex items-center justify-end gap-5 pt-2">
-                        <b>Total Amount</b>
-                        <span>${selectedOrder.amount + 2}.00</span>
+                        <span>Total Amount</span>
+                        <b>${selectedOrder.amount + 2}.00</b>
                       </div>
                     </div>
                   </div>

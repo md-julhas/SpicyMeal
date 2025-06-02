@@ -38,7 +38,6 @@ const FoodList = () => {
   }, [])
 
   const removeFood = async (foodId) => {
-    console.log(foodId)
 
     setDeletingId(foodId)
     const response = await axios.delete(`${url}/api/food/remove/${foodId}`)

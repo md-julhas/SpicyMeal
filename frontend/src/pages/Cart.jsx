@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { IoCloseOutline } from "react-icons/io5"
 import { useNavigate } from "react-router-dom"
 import { FaShoppingCart } from "react-icons/fa"
@@ -12,7 +12,6 @@ const Cart = () => {
     cartFoodItems,
     removeFromCart,
     getTotalCartAmount,
-    url,
     removingCartItem,
   } = useContext(StoreContext)
 

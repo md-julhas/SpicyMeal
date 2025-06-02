@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
@@ -59,9 +59,11 @@ const BookTable = () => {
     }
   }
 
+
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="shadow-custom p-10 rounded-md w-full max-w-xl my-10 bg-white">
+    <div className="section-container py-10 bg-gray-100">
+      <div className="inner-container shadow-custom rounded-md p-8 max-w-2xl w-full bg-white">
         <Helmet>
           <title>Book a table | SpicyMeal</title>
           <meta

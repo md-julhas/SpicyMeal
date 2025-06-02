@@ -32,7 +32,7 @@ const UploadFood = () => {
 
     if (file) {
       const validTypes = ["image/jpeg", "image/jpg", "image/png"]
-      const maxSize = 500 * 1024 // 500KB in bytes
+      const maxSize = 1024 * 1024 // 1MB
 
       if (!validTypes.includes(file.type)) {
         toast.error("Only JPG, JPEG, or PNG files are allowed.")
@@ -40,7 +40,7 @@ const UploadFood = () => {
       }
 
       if (file.size > maxSize) {
-        toast.error("Image must be smaller than 500KB!")
+        toast.error("Image must be smaller than 1MB!")
         return
       }
 
@@ -159,7 +159,7 @@ const UploadFood = () => {
               <option value="burger">Burger</option>
               <option value="pizza">Pizza</option>
               <option value="fried chicken">Fried Chicken</option>
-              <option value="sandwich">sandwich</option>
+              <option value="sandwich">Sandwich</option>
               <option value="grilled salmon">Grilled Salmon</option>
               <option value="fries">Fries</option>
               <option value="cheesecake">Cheesecake</option>

@@ -106,7 +106,7 @@ const MyOrders = () => {
                               <b>Order ID:</b> {order._id}
                             </div>
                             <div>
-                              <b>Order Date:</b> {moment(order.date).fromNow()}
+                              <b>Order Date:</b> {moment(order.createdAt).fromNow()}
                             </div>
                           </div>
 

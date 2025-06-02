@@ -42,7 +42,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
     "w-16 py-1 bg-themeColor/20 rounded-sm text-sm text-pink-600"
 
   return (
-    <div className="bg-white p-5 rounded-sm">
+    <div className="bg-white p-5 rounded-sm shadow-sm">
       <div className="h-60 w-full">
         <img
           src={image}
@@ -57,7 +57,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
             {highlightText(name, search)}
           </b>
         </div>
-        <p className="first-letter:uppercase line-clamp-2 overflow-hidden text-ellipsis text-gray-400 text-sm">
+        <p className="first-letter:uppercase line-clamp-3 overflow-hidden text-ellipsis text-gray-400 text-sm">
           {highlightText(description, search)}
         </p>
         <p className="text-2xl font-semibold text-themeColor py-2">${price}</p>

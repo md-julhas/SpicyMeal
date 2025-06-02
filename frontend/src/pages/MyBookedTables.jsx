@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react"
 import axios from "axios"
 import { CiLogin } from "react-icons/ci"
-
-import { StoreContext } from "../context/StoreContext"
+import moment from "moment"
 import { Helmet } from "react-helmet"
 import { toast } from "react-toastify"
 
+import { StoreContext } from "../context/StoreContext"
 const MyBookedTables = () => {
   const { token, url } = useContext(StoreContext)
   const [bookings, setBookings] = useState([])
@@ -107,16 +107,13 @@ const MyBookedTables = () => {
                       <div>
                         <b>Booking ID:</b> {booking._id}
                       </div>
-
                       <div>
                         <b>Guests:</b> {booking.numberOfGuests}
                       </div>
                       <div>
-                        <b>Date:</b>{" "}
-                        {new Date(booking.date).toLocaleDateString()}
-                      </div>
-                      <div>
-                        <b>Time:</b> {booking.time}
+                        <b>Schedule Date:</b>{" "}
+                        {moment(booking.date).format("MMMM D, YYYY")} at{" "}
+                        {moment(booking.time, "HH:mm").format("h:mm A")}
                       </div>
                       <div className="capitalize">
                         <b>Status: </b>{" "}
@@ -136,7 +133,6 @@ const MyBookedTables = () => {
                           {booking.status}
                         </span>
                       </div>
-
                       <div>
                         <b>Special Requests & Notes:</b>
                         <p className="text-gray-400 mt-1">

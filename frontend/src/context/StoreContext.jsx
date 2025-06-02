@@ -63,27 +63,6 @@ const StoreContextProvider = (props) => {
     }, 0)
   }
 
-  // const fetchFoodList = async () => {
-  //   setFoodListLoading(true)
-
-  //   try {
-  //     const response = await axios.get(url + "/api/food/food-list", {
-  //       params: { search: search },
-  //     })
-  //     if (response.data.data) {
-  //       setFoodList(response.data.data)
-  //     } else {
-  //       throw new Error("Could not found foods!")
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-
-  //     setFoodListError(error.message)
-  //   } finally {
-  //     setFoodListLoading(false)
-  //   }
-  // }
-
   const fetchFoodList = async () => {
     setFoodListLoading(true)
 

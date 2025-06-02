@@ -12,8 +12,8 @@ const Login = () => {
   const { url, setToken } = useStateContext()
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
-    email: "",
-    password: "",
+    email: "julhas.info@gmail.com",
+    password: "66666666",
   })
 
   const handleOnChange = (e) => {

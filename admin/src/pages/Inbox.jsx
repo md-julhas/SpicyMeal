@@ -15,6 +15,7 @@ const Inbox = () => {
   const [inbox, setInbox] = useState([])
   const [loading, setLoading] = useState(true)
   const [selectedMessage, setSelectedMessage] = useState(null)
+  const [deletingId, setDeletingId] = useState(null)
 
   useClickOutside(modelRef, selectedMessage, setSelectedMessage)
 
@@ -41,6 +42,7 @@ const Inbox = () => {
 
   const handleDeleteMessage = async (event, id) => {
     event.stopPropagation()
+    setDeletingId(id)
     try {
       const response = await axios.delete(
         `${url}/api/contact-us/delete-message/${id}`,
@@ -54,6 +56,8 @@ const Inbox = () => {
       }
     } catch (error) {
       toast.error(error.message)
+    } finally {
+      setDeletingId(null)
     }
   }
 
@@ -139,7 +143,11 @@ const Inbox = () => {
                   onClick={(e) => handleDeleteMessage(e, msg._id)}
                   className="ml-auto h-fit p-2 transition-colors duration-300 bg-themeColor text-themeColor rounded-sm bg-opacity-20 hover:bg-themeColor hover:text-gray-200 text-sm"
                 >
-                  <RiDeleteBinLine />
+                  {deletingId === msg._id ? (
+                    <div className="w-3 h-3 border-2 border-t-themeColor rounded-full animate-spin"></div>
+                  ) : (
+                    <RiDeleteBinLine />
+                  )}
                 </button>
               </div>
             </div>

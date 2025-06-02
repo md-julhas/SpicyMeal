@@ -40,7 +40,7 @@ const MyOrders = () => {
   return (
     <div
       className="section-container bg-gray-100"
-      style={{ minHeight: "calc(100vh - 550px)" }}
+      style={{ minHeight: "calc(100vh - 300px)" }}
     >
       <div className="inner-container py-10">
         <Helmet>

@@ -101,4 +101,4 @@ The backend application was running behind a proxy server, which caused the clie
 
 ### ✅ Solution
 
-I resolved the issue by using `app.set('trust proxy', true)` in the Express.js application. This allowed Express to trust the `X-Forwarded-For` header and accurately extract the client’s real IP address from it. As a result, the rate-limiting middleware functioned properly and enforced request limits based on the actual client IPs.
+I resolved the issue by using `app.set('trust proxy', 2)` in the Express.js application. This allowed Express to trust the `X-Forwarded-For` header and accurately extract the client’s real IP address from it. As a result, the rate-limiting middleware functioned properly and enforced request limits based on the actual client IPs.
